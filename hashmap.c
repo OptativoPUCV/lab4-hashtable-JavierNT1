@@ -78,7 +78,7 @@ void enlarge(HashMap * map) {
   map->size = 0;
 
   for(long i = 0; i < oldCap; i++){
-    if(oldCap[i] != NULL){
+    if(OldBuc[i] != NULL){
       insertMap(map, OldBuc[i]->key, OldBuc[i]->value);
       free(OldBuc[i]);
     }
