@@ -43,9 +43,9 @@ long resolverColisiones(HashMap* map, int posInicial){
   long intentos = 0;
 
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL){
-    pos = (posInicial + intentos * intentos) % map->size;
+    pos = (posInicial + intentos * intentos) % map->capacity;
     intentos++;
-    if(intentos >= map->size)
+    if(intentos >= map->capacity)
       return -1;    
   }
   return pos;
