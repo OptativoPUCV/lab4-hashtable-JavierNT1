@@ -122,3 +122,18 @@ hashmap.c:105:8: error: unused variable ‘pos’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 b61e02d
+Thu 25 Apr 2024 07:47:46 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘enlarge’:
+hashmap.c:81:14: error: subscripted value is neither array nor pointer nor vector
+   81 |     if(oldCap[i] != NULL){
+      |              ^
+hashmap.c: In function ‘searchMap’:
+hashmap.c:105:8: error: unused variable ‘pos’ [-Werror=unused-variable]
+  105 |   long pos = hash(key, map->capacity);
+      |        ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+76588c3
