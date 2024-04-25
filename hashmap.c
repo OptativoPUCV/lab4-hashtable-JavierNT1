@@ -39,7 +39,7 @@ int is_equal(void* key1, void* key2){
 }
 
 long resolverColisiones(HashMap* map, int pos){
-  long intentos = 1;
+  long intentos = 0;
 
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL){
     pos = (pos + intentos * intentos) % map->size;
