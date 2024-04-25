@@ -69,9 +69,21 @@ void insertMap(HashMap* map, char * key, void * value) {
 }
 
 void enlarge(HashMap * map) {
-    enlarge_called = 1; //no borrar (testing purposes)
+  enlarge_called = 1; //no borrar (testing purposes)
+  HashMap** OldBuc = map->buckets;
+  long oldCap = map->capacity;
+  map->capacity = oldCap * 2;
 
+  map->buckets = (Pair**)calloc(map->capacity, sizeof(Pair*));
+  map->size = 0;
 
+  for(long i = 0; i < oldCap; i++){
+    if(oldCap[i] != NULL){
+      insertMap(map, OldBuc[i]->key, OldBuc[i]->value);
+      free(OldBuc[i]);
+    }
+  }
+  free(OldBuc);
 }
 
 
@@ -90,9 +102,10 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
+  long pos = hash(key, map->capacity);
+  
 
-
-    return NULL;
+  return NULL;
 }
 
 Pair * firstMap(HashMap * map) {
