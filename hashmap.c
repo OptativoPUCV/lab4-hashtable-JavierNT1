@@ -38,12 +38,11 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-long resolverColisiones(HashMap* map, int posInicial){
-  long pos = posInicial;
+long resolverColisiones(HashMap* map, int pos){
   long intentos = 1;
 
   while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL){
-    pos = (posInicial + intentos * intentos) % map->size;
+    pos = (pos + intentos * intentos) % map->size;
     intentos++;
     if(intentos >= map->size)
       return -1;    
