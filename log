@@ -159,3 +159,14 @@ Thu 25 Apr 2024 11:16:24 PM UTC:
  tests:  9|2
 total_score: 50/70
 4cb851f
+Thu 25 Apr 2024 11:24:19 PM UTC: 
+ hashmap.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:119:3: error: parameter names (without types) in function declaration [-Werror]
+  119 |   Pair* searchMap(map, key);
+      |   ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+23b9858
