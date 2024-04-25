@@ -62,8 +62,6 @@ void insertMap(HashMap* map, char * key, void * value) {
   }
   else{
     long posF = resolverColisiones(map, pos);
-    printf("la p %ld", pos);
-    printf("Insertando elemento con clave %s en la posición %ld\n", key, posF);
     map->buckets[posF] = par;
   }
   
