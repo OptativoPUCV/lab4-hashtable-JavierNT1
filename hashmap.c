@@ -38,10 +38,37 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
+long resolverColisiones(HashMap* map, int posInicial){
+  long pos = posInicial;
+  long intentos = 0;
 
-void insertMap(HashMap * map, char * key, void * value) {
+  while(map->buckets[pos] != NULL && map->buckets[pos]->key != NULL){
+    pos = (posInicial + intentos * intentos) % map->size;
+    intentos++;
+    if(intentos >= map->size)
+      return -1;    
+  }
+  return pos;
+}
 
+void insertMap(HashMap* map, char * key, void * value) {
+  long pos = hash(key, map->capacity);
+  Pair * par = createPair(key, value);
 
+  if(map->buckets[pos] != NULL){
+    if(is_equal(map->buckets[pos]->key, key) == 1)
+      return;
+  }
+
+  if(map->buckets[pos] == NULL){
+    map->buckets[pos] = par;
+  }
+  else{
+    long posF = resolverColisiones(map, pos);
+    map->buckets[posF] = par;
+  }
+  
+  map->size++;
 }
 
 void enlarge(HashMap * map) {
