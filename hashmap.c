@@ -122,8 +122,16 @@ Pair * searchMap(HashMap * map,  char * key) {
 }
 
 Pair * firstMap(HashMap * map) {
-
-    return NULL;
+  for(long i = 0; map->capacity; i++){
+    Pair *par = map->buckets[i];
+    if(par != NULL){
+      if(par->key !=NULL){
+        map->current = i;
+        return par;
+      }
+    }
+  }
+  return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
